@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/NasSilverBullet/auto-insert_timestamps-on-teamsprit/pkg/webdriver"
+	"github.com/NasSilverBullet/teamspirit/pkg/webdriver"
 )
 
 func main() {

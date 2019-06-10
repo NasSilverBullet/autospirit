@@ -1,2 +1,4 @@
-# Auto insert timestamps on teamsprit
+# Teamspirit
+
+## Auto insert timestamps on teamsprit
 

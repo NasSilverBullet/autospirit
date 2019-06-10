@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	appdir     = "/src/github.com/NasSilverBullet/auto-insert_timestamps-on-teamsprit"
+	appdir     = "/src/github.com/NasSilverBullet/teamspirit"
 	configfile = "config.json"
 )
 

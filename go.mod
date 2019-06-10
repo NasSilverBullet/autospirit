@@ -1,4 +1,4 @@
-module github.com/NasSilverBullet/auto-insert_timestamps-on-teamsprit
+module github.com/NasSilverBullet/teamspirit
 
 go 1.12
 
