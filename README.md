@@ -28,7 +28,7 @@ hello       Going to work
 help        Help about any command
 ``` 
 
-###Flags
+### Flags
 ```shell
  -h, --help   help for autospirit
 ```
