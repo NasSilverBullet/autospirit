@@ -10,7 +10,7 @@ import (
 func Exec() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "autospirit",
-		Short: "cli tool to insert timestamps on teamspirit automatically",
+		Short: "cli tool to insert timestamps on TeamSpirit automatically",
 		Long:  ``,
 	}
 	return cmd
