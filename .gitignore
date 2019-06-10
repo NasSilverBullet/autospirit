@@ -2,4 +2,5 @@ autospirit
 !*/autospirit
 .DS_Store
 READMEOLD.md
+tmp
 /config/config.json
