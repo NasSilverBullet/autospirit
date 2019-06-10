@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
+	"time"
 
 	"github.com/NasSilverBullet/autospirit/pkg/webdriver"
 )
@@ -12,5 +12,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(d)
+	if err := d.Driver.Start(); err != nil {
+		log.Fatalf("Failed to start driver:%v", err)
+	}
+	defer func() {
+		err = d.Driver.Stop()
+	}()
+	page, err := d.Driver.NewPage()
+	if err != nil {
+		log.Fatalf("Failed to open page:%v", err)
+	}
+	if err := page.Navigate(d.RootURL); err != nil {
+		log.Fatalf("Failed to navigate:%v", err)
+	}
+	time.Sleep(3 * time.Second)
 }
