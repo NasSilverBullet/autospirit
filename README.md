@@ -1,6 +1,6 @@
 # autospirit
 
-## cli tool to insert timestamps on teamspirit automatically
+## cli tool to insert timestamps on TeamSpirit automatically
 
 ### Installing(requires Go 1.11.4)
 ```shell
