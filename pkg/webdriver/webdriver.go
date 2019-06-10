@@ -53,8 +53,8 @@ func openConfigFile() ([]byte, error) {
 	defer func() {
 		err = f.Close()
 	}()
-	byte, err := ioutil.ReadAll(f)
-	return byte, err
+	b, err := ioutil.ReadAll(f)
+	return b, err
 }
 
 func setDriver(d *WebDriver) {
