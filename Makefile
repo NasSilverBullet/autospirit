@@ -4,9 +4,9 @@ GOBUILD=go build
 GOCLEAN=go clean ./...
 GOTEST=go test -cover ./...
 DOCKER=docker exec -it
-BINARY_NAME=timestamp
-DOCKER_SERVICE_NAME=timestamp_app_1
-MAIN=cmd/timestamp/
+BINARY_NAME=teamspirit
+DOCKER_SERVICE_NAME=teamspirit_app_1
+MAIN=cmd/teamspirit/
 
 # VAR
 var=
