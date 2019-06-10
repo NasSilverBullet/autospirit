@@ -7,4 +7,4 @@ services:
       dockerfile: Dockerfile
     image: golang:1.11.4
     volumes:
-      - ./:/go/src/github.com/NasSilverBullet/auto_insert_timestamps_on_teamsprit
+      - ./:/go/src/github.com/NasSilverBullet/autospirit

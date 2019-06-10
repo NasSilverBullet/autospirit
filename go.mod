@@ -1,4 +1,4 @@
-module github.com/NasSilverBullet/teamspirit
+module github.com/NasSilverBullet/autospirit
 
 go 1.12
 

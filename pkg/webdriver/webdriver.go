@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	appdir     = "/src/github.com/NasSilverBullet/teamspirit"
+	appdir     = "/src/github.com/NasSilverBullet/autospirit"
 	configfile = "config.json"
 )
 

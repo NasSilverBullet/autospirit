@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/NasSilverBullet/teamspirit/pkg/webdriver"
+	"github.com/NasSilverBullet/autospirit/pkg/webdriver"
 )
 
 func main() {

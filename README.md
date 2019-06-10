@@ -1,4 +1,4 @@
-# Teamspirit
+# autospirit
 
-## Auto insert timestamps on teamsprit
+## Auto insert timestamps on teamspirit
 
