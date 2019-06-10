@@ -24,8 +24,10 @@ func (r *webDrriverRepository) Start() (*agouti.Page, error) {
 	if err != nil {
 		return page, err
 	}
-	err = page.Navigate(r.driver.RootURL)
-	return page, err
+	if err = page.Navigate(r.driver.RootURL); err != nil {
+		return page, err
+	}
+	return page, nil
 }
 
 func (r *webDrriverRepository) Login(p *agouti.Page) error {
@@ -37,8 +39,10 @@ func (r *webDrriverRepository) Login(p *agouti.Page) error {
 	if err := password.SendKeys(r.driver.Password); err != nil {
 		return err
 	}
-	err := p.RunScript(click("Login"), nil, nil)
-	return err
+	if err := p.RunScript(click("Login"), nil, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (r *webDrriverRepository) Go(p *agouti.Page) error {
@@ -57,8 +61,7 @@ func (r *webDrriverRepository) Out(p *agouti.Page) error {
 
 func (r *webDrriverRepository) Stop() error {
 	time.Sleep(5 * time.Second)
-	err := r.driver.Driver.Stop()
-	return err
+	return r.driver.Driver.Stop()
 }
 
 // TODO: p.FindByID("Login").Click() のようにする
