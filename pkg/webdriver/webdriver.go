@@ -23,7 +23,7 @@ type WebDriver struct {
 	Password string `json:"password"`
 }
 
-func NewWebDriver() (*WebDriver, error) {
+func New() (*WebDriver, error) {
 	b, err := openConfigFile()
 	if err != nil {
 		return nil, err

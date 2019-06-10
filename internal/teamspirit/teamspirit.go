@@ -6,37 +6,40 @@ import (
 	"github.com/NasSilverBullet/autospirit/pkg/webdriver"
 )
 
-type webDriverInterface struct{}
-
-func NewWedDriverInteface() webdriver.WebDriverInterface {
-	return &webDriverInterface{}
+type webDrriverRepository struct {
+	d *webdriver.WebDriver
 }
 
-func (i *webDriverInterface) Start(d *webdriver.WebDriver) error {
-	if err := d.Driver.Start(); err != nil {
+func NewWebDrriverRepository() (*webDrriverRepository, error) {
+	r, err := webdriver.New()
+	return &webDrriverRepository{r}, err
+}
+
+func (r *webDrriverRepository) Start() error {
+	if err := r.d.Driver.Start(); err != nil {
 		return err
 	}
-	page, err := d.Driver.NewPage()
+	page, err := r.d.Driver.NewPage()
 	if err != nil {
 		return err
 	}
-	err = page.Navigate(d.RootURL)
+	err = page.Navigate(r.d.RootURL)
 	time.Sleep(3 * time.Second)
 	return err
 }
 
-func (i *webDriverInterface) Login(d *webdriver.WebDriver) error {
+func (r *webDrriverRepository) Login() error {
 	return nil
 }
 
-func (i *webDriverInterface) Go(d *webdriver.WebDriver) error {
+func (r *webDrriverRepository) Go() error {
 	return nil
 }
 
-func (i *webDriverInterface) Out(d *webdriver.WebDriver) error {
+func (r *webDrriverRepository) Out() error {
 	return nil
 }
 
-func (i *webDriverInterface) Stop(d *webdriver.WebDriver) error {
+func (r *webDrriverRepository) Stop() error {
 	return nil
 }

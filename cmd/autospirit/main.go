@@ -2,9 +2,8 @@ package main
 
 import (
 	"log"
-	"time"
 
-	"github.com/NasSilverBullet/autospirit/pkg/webdriver"
+	"github.com/NasSilverBullet/autospirit/internal/cmd"
 )
 
 func main() {
@@ -14,21 +13,7 @@ func main() {
 }
 
 func run() error {
-	d, err := webdriver.NewWebDriver()
-	if err != nil {
-		return err
-	}
-	if err := d.Driver.Start(); err != nil {
-		return err
-	}
-	defer func() {
-		err = d.Driver.Stop()
-	}()
-	page, err := d.Driver.NewPage()
-	if err != nil {
-		return err
-	}
-	err = page.Navigate(d.RootURL)
-	time.Sleep(3 * time.Second)
+	c := cmd.NewAutoSpiritCommand()
+	err := c.Execute()
 	return err
 }
