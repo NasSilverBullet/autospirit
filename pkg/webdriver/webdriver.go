@@ -12,7 +12,7 @@ import (
 
 const (
 	appdir     = "/src/github.com/NasSilverBullet/autospirit"
-	configfile = "config.json"
+	configfile = "config/config.json"
 )
 
 type WebDriver struct {

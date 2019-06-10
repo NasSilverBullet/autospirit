@@ -1,0 +1,6 @@
+{
+  "browser": "chrome",
+  "rooturl": "https://teamspirit-****.cloudforce.com/",
+  "id": "test@example.com",
+  "password": "**********"
+}
