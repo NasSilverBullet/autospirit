@@ -8,22 +8,27 @@ import (
 )
 
 func main() {
-	d, err := webdriver.NewWebDriver()
-	if err != nil {
+	if err := run(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+func run() error {
+	d, err := webdriver.NewWebDriver()
+	if err != nil {
+		return err
+	}
 	if err := d.Driver.Start(); err != nil {
-		log.Fatalf("Failed to start driver:%v", err)
+		return err
 	}
 	defer func() {
 		err = d.Driver.Stop()
 	}()
 	page, err := d.Driver.NewPage()
 	if err != nil {
-		log.Fatalf("Failed to open page:%v", err)
+		return err
 	}
-	if err := page.Navigate(d.RootURL); err != nil {
-		log.Fatalf("Failed to navigate:%v", err)
-	}
+	err = page.Navigate(d.RootURL)
 	time.Sleep(3 * time.Second)
+	return err
 }
