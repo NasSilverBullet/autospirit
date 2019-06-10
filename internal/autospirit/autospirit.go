@@ -3,6 +3,7 @@ package autospirit
 import (
 	"github.com/NasSilverBullet/autospirit/internal/teamspirit"
 	"github.com/spf13/cobra"
+	"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 )
 
 func Exec() *cobra.Command {
@@ -33,7 +34,11 @@ func Hello() *cobra.Command {
 			if err := r.Login(p); err != nil {
 				return err
 			}
-			return r.Go(p)
+			if err := r.Go(p); err != nil {
+				return err
+			}
+			fmt.Println("Hello!")
+			return nil
 		},
 	}
 	return cmd
@@ -58,7 +63,11 @@ func Bye() *cobra.Command {
 			if err := r.Login(p); err != nil {
 				return err
 			}
-			return r.Out(p)
+			if err := r.Out(p); err != nil {
+				return err
+			}
+			fmt.Println("Bye!")
+			return nil
 		},
 	}
 	return cmd
