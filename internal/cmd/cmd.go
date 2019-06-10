@@ -8,6 +8,7 @@ import (
 func NewAutoSpiritCommand() *cobra.Command {
 	cobra.OnInitialize()
 	cmd := autospirit.Exec()
-	cmd.AddCommand(autospirit.Go())
+	cmd.AddCommand(autospirit.Hello())
+	cmd.AddCommand(autospirit.Bye())
 	return cmd
 }

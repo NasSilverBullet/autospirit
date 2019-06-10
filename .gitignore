@@ -1,5 +1,6 @@
 autospirit
-!cmd/autospirit
+!*/autospirit
+
 .DS_Store
 READMEOLD.md
 timestamp_old
