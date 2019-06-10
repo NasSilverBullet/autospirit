@@ -13,7 +13,7 @@ func main() {
 }
 
 func run() error {
-	c := cmd.NewAutoSpiritCommand()
+	c := cmd.New()
 	err := c.Execute()
 	return err
 }

@@ -5,7 +5,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewAutoSpiritCommand() *cobra.Command {
+func New() *cobra.Command {
 	cobra.OnInitialize()
 	cmd := autospirit.Exec()
 	cmd.AddCommand(autospirit.Hello())
