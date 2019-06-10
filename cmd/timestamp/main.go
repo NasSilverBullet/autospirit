@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-	fmt.Println("timestamps")
 	d, err := webdriver.NewWebDriver()
 	if err != nil {
 		log.Fatal(err)

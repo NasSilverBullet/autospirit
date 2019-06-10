@@ -33,7 +33,7 @@ func NewWebDriver() (*WebDriver, error) {
 	if err != nil {
 		return nil, err
 	}
-	setDriver(d)
+	err = setDriver(d)
 	return d, err
 }
 
@@ -57,9 +57,15 @@ func openConfigFile() ([]byte, error) {
 	return b, err
 }
 
-func setDriver(d *WebDriver) {
+func setDriver(d *WebDriver) error {
+	var err error
 	switch d.Browser {
 	case "chrome":
 		d.Driver = agouti.ChromeDriver(agouti.Browser("chrome"))
+	case "windows":
+	//	TODO: 作れたら作る
+	default:
+		err = errors.New(fmt.Sprintf("driver '%s' is not compatible, plese use another driver", d.Browser))
 	}
+	return err
 }
