@@ -1,9 +1,10 @@
 package autospirit
 
 import (
+	"fmt"
+
 	"github.com/NasSilverBullet/autospirit/internal/teamspirit"
 	"github.com/spf13/cobra"
-	"golang.org/x/tools/go/ssa/interp/testdata/src/fmt"
 )
 
 func Exec() *cobra.Command {
