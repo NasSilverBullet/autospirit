@@ -62,9 +62,10 @@ func setDriver(d *WebDriver) error {
 	switch d.Browser {
 	case "chrome":
 		d.Driver = agouti.ChromeDriver(agouti.Browser("chrome"))
-	case "firefox":
-	//	TODO: 作れたら作る
+	// TODO: 作れたら作る
 	// Edgeとか他のはいいよね
+	//case "firefox":
+
 	default:
 		err = errors.New(fmt.Sprintf("driver '%s' is not compatible, plese use another driver", d.Browser))
 	}
