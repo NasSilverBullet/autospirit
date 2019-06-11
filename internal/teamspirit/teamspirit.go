@@ -20,17 +20,20 @@ func (r *webDrriverRepository) Start() (*agouti.Page, error) {
 	if err := r.driver.Driver.Start(); err != nil {
 		return nil, err
 	}
-	page, err := r.driver.Driver.NewPage()
+	p, err := r.driver.Driver.NewPage()
 	if err != nil {
-		return page, err
+		return p, err
 	}
-	if err = page.Navigate(r.driver.RootURL); err != nil {
-		return page, err
+	if err = p.Navigate(r.driver.RootURL); err != nil {
+		return p, err
 	}
-	if err = page.Session().SetImplicitWait(30); err != nil {
-		return page, err
+	if err = p.Session().SetImplicitWait(30); err != nil {
+		return p, err
 	}
-	return page, err
+	if err = p.SetImplicitWait(1000); err != nil {
+		return p, err
+	}
+	return p, err
 }
 
 func (r *webDrriverRepository) Login(p *agouti.Page) error {
