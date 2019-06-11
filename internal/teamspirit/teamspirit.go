@@ -27,6 +27,9 @@ func (r *webDrriverRepository) Start() (*agouti.Page, error) {
 	if err = page.Navigate(r.driver.RootURL); err != nil {
 		return page, err
 	}
+	if err = page.Session().SetImplicitWait(30); err != nil {
+		return page, err
+	}
 	return page, err
 }
 
@@ -44,13 +47,25 @@ func (r *webDrriverRepository) Login(p *agouti.Page) error {
 }
 
 func (r *webDrriverRepository) Go(p *agouti.Page) error {
-	err := insertTimestamp(p, "pushStart")
-	return err
+	time.Sleep(10 * time.Second)
+	if err := insertTimestamp(p, "pushStart"); err != nil {
+		return err
+	}
+	if err := p.Screenshot("screenshot/hello.jpg"); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (r *webDrriverRepository) Out(p *agouti.Page) error {
-	err := insertTimestamp(p, "pushEnd")
-	return err
+	time.Sleep(10 * time.Second)
+	if err := insertTimestamp(p, "pushEnd"); err != nil {
+		return err
+	}
+	if err := p.Screenshot("screenshot/bye.jpg"); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (r *webDrriverRepository) Stop() error {
@@ -69,8 +84,5 @@ func insertTimestamp(p *agouti.Page, id string) error {
 		return err
 	}
 	time.Sleep(5 * time.Second)
-	if err := p.Screenshot("test.jpg"); err != nil {
-		return err
-	}
 	return nil
 }
