@@ -4,7 +4,7 @@
 
 ### Installing(requires Go 1.11.4)
 ```shell
-$ brew install phantomjs
+$ brew cask install phantomjs
 $ export GO111MODULE=auto
 $ go get -u github.com/NasSilverBullet/autospirit/cmd/autospirit
 ```
