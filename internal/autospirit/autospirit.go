@@ -38,7 +38,7 @@ func Hello() *cobra.Command {
 			if err := r.Go(p); err != nil {
 				return err
 			}
-			fmt.Println("Hello!")
+			fmt.Println("Success!!")
 			return nil
 		},
 	}
@@ -67,7 +67,7 @@ func Bye() *cobra.Command {
 			if err := r.Out(p); err != nil {
 				return err
 			}
-			fmt.Println("Bye!")
+			fmt.Println("Success!!")
 			return nil
 		},
 	}
