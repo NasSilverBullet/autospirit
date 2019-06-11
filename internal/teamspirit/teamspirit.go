@@ -12,8 +12,8 @@ type webDrriverRepository struct {
 }
 
 func NewWebDrriverRepository() (*webDrriverRepository, error) {
-	r, err := webdriver.New()
-	return &webDrriverRepository{r}, err
+	d, err := webdriver.New()
+	return &webDrriverRepository{d}, err
 }
 
 func (r *webDrriverRepository) Start() (*agouti.Page, error) {
