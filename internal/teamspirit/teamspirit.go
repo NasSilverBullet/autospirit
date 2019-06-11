@@ -30,9 +30,6 @@ func (r *webDrriverRepository) Start() (*agouti.Page, error) {
 	if err = p.Session().SetImplicitWait(30); err != nil {
 		return p, err
 	}
-	if err = p.SetImplicitWait(1000); err != nil {
-		return p, err
-	}
 	return p, err
 }
 
@@ -50,7 +47,6 @@ func (r *webDrriverRepository) Login(p *agouti.Page) error {
 }
 
 func (r *webDrriverRepository) Go(p *agouti.Page) error {
-	time.Sleep(10 * time.Second)
 	if err := insertTimestamp(p, "pushStart"); err != nil {
 		return err
 	}
@@ -61,7 +57,6 @@ func (r *webDrriverRepository) Go(p *agouti.Page) error {
 }
 
 func (r *webDrriverRepository) Out(p *agouti.Page) error {
-	time.Sleep(10 * time.Second)
 	if err := insertTimestamp(p, "pushEnd"); err != nil {
 		return err
 	}
@@ -77,6 +72,7 @@ func (r *webDrriverRepository) Stop() error {
 }
 
 func insertTimestamp(p *agouti.Page, id string) error {
+	time.Sleep(10 * time.Second)
 	if err := p.FindByID("publisherAttach09D2800000A981a").Click(); err != nil {
 		return err
 	}
