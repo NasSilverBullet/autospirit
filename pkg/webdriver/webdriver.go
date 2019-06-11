@@ -60,12 +60,12 @@ func openConfigFile() ([]byte, error) {
 func setDriver(d *WebDriver) error {
 	var err error
 	switch d.Browser {
-	case "chrome":
-		d.Driver = agouti.ChromeDriver(agouti.Browser("chrome"))
+	case "phantom":
+		d.Driver = agouti.PhantomJS(
+		//agouti.Debug,
+		)
 	// TODO: 作れたら作る
-	// Edgeとか他のはいいよね
-	//case "firefox":
-
+	//case "selenium":
 	default:
 		err = errors.New(fmt.Sprintf("driver '%s' is not compatible, plese use another driver", d.Browser))
 	}
