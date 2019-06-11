@@ -67,12 +67,11 @@ func (r *webDrriverRepository) Out(p *agouti.Page) error {
 }
 
 func (r *webDrriverRepository) Stop() error {
-	time.Sleep(10 * time.Second)
 	return r.driver.Driver.Stop()
 }
 
 func insertTimestamp(p *agouti.Page, id string) error {
-	time.Sleep(10 * time.Second)
+	time.Sleep(3 * time.Second)
 	if err := p.FindByID("publisherAttach09D2800000A981a").Click(); err != nil {
 		return err
 	}
@@ -82,6 +81,6 @@ func insertTimestamp(p *agouti.Page, id string) error {
 	if err := p.FindByID(id).Click(); err != nil {
 		return err
 	}
-	time.Sleep(5 * time.Second)
+	time.Sleep(3 * time.Second)
 	return nil
 }

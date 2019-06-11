@@ -29,16 +29,19 @@ func Hello() *cobra.Command {
 			if err != nil {
 				return err
 			}
+			fmt.Println("Lauch driver")
 			defer func() {
 				err = r.Stop()
 			}()
 			if err := r.Login(p); err != nil {
 				return err
 			}
+			fmt.Println("Success login")
 			if err := r.Go(p); err != nil {
 				return err
 			}
-			fmt.Println("Success!!")
+			fmt.Println("Insert timestamp")
+			fmt.Println("Hello!!")
 			return nil
 		},
 	}
@@ -58,16 +61,19 @@ func Bye() *cobra.Command {
 			if err != nil {
 				return err
 			}
+			fmt.Println("Lauch driver")
 			defer func() {
 				err = r.Stop()
 			}()
 			if err := r.Login(p); err != nil {
 				return err
 			}
+			fmt.Println("Success login")
 			if err := r.Out(p); err != nil {
 				return err
 			}
-			fmt.Println("Success!!")
+			fmt.Println("Insert timestamp")
+			fmt.Println("Bye!!")
 			return nil
 		},
 	}
