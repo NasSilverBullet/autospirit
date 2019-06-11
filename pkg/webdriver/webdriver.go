@@ -60,7 +60,7 @@ func openConfigFile() ([]byte, error) {
 func setDriver(d *WebDriver) error {
 	var err error
 	switch d.Browser {
-	case "phantom":
+	case "phantomjs":
 		d.Driver = agouti.PhantomJS(
 		//agouti.Debug,
 		)

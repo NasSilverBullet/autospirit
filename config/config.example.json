@@ -1,5 +1,5 @@
 {
-  "browser": "chrome",
+  "browser": "phantomjs",
   "rooturl": "https://teamspirit-****.cloudforce.com/",
   "id": "test@example.com",
   "password": "**********"
