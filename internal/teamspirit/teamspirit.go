@@ -27,44 +27,50 @@ func (r *webDrriverRepository) Start() (*agouti.Page, error) {
 	if err = page.Navigate(r.driver.RootURL); err != nil {
 		return page, err
 	}
-	return page, nil
+	return page, err
 }
 
 func (r *webDrriverRepository) Login(p *agouti.Page) error {
-	userName := p.FindByID("username")
-	if err := userName.SendKeys(r.driver.ID); err != nil {
+	if err := p.FindByID("username").Fill(r.driver.ID); err != nil {
 		return err
 	}
-	password := p.FindByID("password")
-	if err := password.SendKeys(r.driver.Password); err != nil {
+	if err := p.FindByID("password").Fill(r.driver.Password); err != nil {
 		return err
 	}
-	if err := p.RunScript(click("Login"), nil, nil); err != nil {
+	if err := p.FindByID("Login").Click(); err != nil {
 		return err
 	}
 	return nil
 }
 
 func (r *webDrriverRepository) Go(p *agouti.Page) error {
-	if err := p.RunScript(click("btnStInput"), nil, nil); err != nil {
-		return err
-	}
-	return nil
+	err := insertTimestamp(p, "pushStart")
+	return err
 }
 
 func (r *webDrriverRepository) Out(p *agouti.Page) error {
-	if err := p.RunScript(click("btnEtInput"), nil, nil); err != nil {
-		return err
-	}
-	return nil
+	err := insertTimestamp(p, "pushEnd")
+	return err
 }
 
 func (r *webDrriverRepository) Stop() error {
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
 	return r.driver.Driver.Stop()
 }
 
-// TODO: p.FindByID("Login").Click() のようにする
-func click(id string) string {
-	return "document.getElementById('" + id + "').click()"
+func insertTimestamp(p *agouti.Page, id string) error {
+	if err := p.FindByID("publisherAttach09D2800000A981a").Click(); err != nil {
+		return err
+	}
+	if err := p.FindByID("09D2800000A981a_06628000006IAtS").SwitchToFrame(); err != nil {
+		return err
+	}
+	if err := p.FindByID(id).Click(); err != nil {
+		return err
+	}
+	time.Sleep(5 * time.Second)
+	if err := p.Screenshot("test.jpg"); err != nil {
+		return err
+	}
+	return nil
 }
