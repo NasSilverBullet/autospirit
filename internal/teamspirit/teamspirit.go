@@ -50,9 +50,6 @@ func (r *webDrriverRepository) Go(p *agouti.Page) error {
 	if err := insertTimestamp(p, "pushStart"); err != nil {
 		return err
 	}
-	if err := p.Screenshot("screenshot/hello.jpg"); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -71,7 +68,7 @@ func (r *webDrriverRepository) Stop() error {
 }
 
 func insertTimestamp(p *agouti.Page, id string) error {
-	time.Sleep(3 * time.Second)
+	time.Sleep(4 * time.Second)
 	if err := p.FindByID("publisherAttach09D2800000A981a").Click(); err != nil {
 		return err
 	}
@@ -81,6 +78,9 @@ func insertTimestamp(p *agouti.Page, id string) error {
 	if err := p.FindByID(id).Click(); err != nil {
 		return err
 	}
-	time.Sleep(3 * time.Second)
+	time.Sleep(2 * time.Second)
+	if err := p.Screenshot("screenshot/" + id + ".jpg"); err != nil {
+		return err
+	}
 	return nil
 }
