@@ -57,9 +57,6 @@ func (r *webDrriverRepository) Out(p *agouti.Page) error {
 	if err := insertTimestamp(p, "pushEnd"); err != nil {
 		return err
 	}
-	if err := p.Screenshot("screenshot/bye.jpg"); err != nil {
-		return err
-	}
 	return nil
 }
 
