@@ -81,6 +81,34 @@ func Bye() *cobra.Command {
 	return cmd
 }
 
+func Test() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "test",
+		Short: "Test command doing up to login",
+		RunE: func(cmd *cobra.Command, args []string) error {
+			r, err := teamspirit.NewWebDrriverRepository()
+			if err != nil {
+				return err
+			}
+			p, err := r.Start()
+			if err != nil {
+				return err
+			}
+			printLog("Lauch driver")
+			defer func() {
+				err = r.Stop()
+			}()
+			if err := r.Login(p); err != nil {
+				return err
+			}
+			printLog("Success login")
+			fmt.Println("Finish test!!")
+			return nil
+		},
+	}
+	return cmd
+}
+
 func printLog(message string) {
 	const layout = "2006-01-02 15:04:05"
 	fmt.Printf("%v : %s\n", time.Now().Format(layout), message)

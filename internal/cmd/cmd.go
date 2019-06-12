@@ -10,5 +10,6 @@ func New() *cobra.Command {
 	cmd := autospirit.Exec()
 	cmd.AddCommand(autospirit.Hello())
 	cmd.AddCommand(autospirit.Bye())
+	cmd.AddCommand(autospirit.Test())
 	return cmd
 }
