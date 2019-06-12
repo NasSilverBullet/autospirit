@@ -2,6 +2,7 @@ package autospirit
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/NasSilverBullet/autospirit/internal/teamspirit"
 	"github.com/spf13/cobra"
@@ -29,18 +30,18 @@ func Hello() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			fmt.Println("Lauch driver")
+			printLog("Lauch driver")
 			defer func() {
 				err = r.Stop()
 			}()
 			if err := r.Login(p); err != nil {
 				return err
 			}
-			fmt.Println("Success login")
+			printLog("Success login")
 			if err := r.Go(p); err != nil {
 				return err
 			}
-			fmt.Println("Insert timestamp")
+			printLog("Insert timestamp")
 			fmt.Println("Hello!!")
 			return nil
 		},
@@ -61,21 +62,26 @@ func Bye() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			fmt.Println("Lauch driver")
+			printLog("Lauch driver")
 			defer func() {
 				err = r.Stop()
 			}()
 			if err := r.Login(p); err != nil {
 				return err
 			}
-			fmt.Println("Success login")
+			printLog("Success login")
 			if err := r.Out(p); err != nil {
 				return err
 			}
-			fmt.Println("Insert timestamp")
+			printLog("Insert timestamp")
 			fmt.Println("Bye!!")
 			return nil
 		},
 	}
 	return cmd
+}
+
+func printLog(message string) {
+	const layout = "2006-01-02 15:04:05"
+	fmt.Printf("%v : %s\n", time.Now().Format(layout), message)
 }
