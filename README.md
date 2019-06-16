@@ -1,34 +1,34 @@
-# autospirit
+![jft](logo/autospirit.jpg)
 
-## cli tool to insert timestamps on TeamSpirit automatically
+# cli tool to insert timestamps on TeamSpirit automatically
 
-### Installing(requires Go 1.11.4)
+## Installing(requires Go 1.11.4)
 ```shell
 $ brew cask install phantomjs
 $ export GO111MODULE=auto
 $ go get -u github.com/NasSilverBullet/autospirit/cmd/autospirit
 ```
 
-### Setting(Please take care of security vulnerability!)
+## Setting(Please take care of security vulnerability!)
 ```
 $ cd $GOPATH/src/github.com/NasSilverBullet/autospirit/config/
 $ cp config.example.json config.json
 $ vi config.json // please update config.json
 ```
 
-### Usage
+## Usage
 ```shell
 $ autospirit [command]
 ```
 
-### Available Commands
+## Available Commands
 ```shell
 bye         Leave the office
 hello       Going to work
 help        Help about any command
 ``` 
 
-### Flags
+## Flags
 ```shell
  -h, --help   help for autospirit
 ```
